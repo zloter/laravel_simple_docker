@@ -1,15 +1,6 @@
 version: '2.2'
 
 services:
-    nuxt:
-        container_name: container_nuxt
-        build:
-            context: ${NUXT_APP_PATH}
-            dockerfile: ./../nuxt_docker/Dockerfile
-        volumes:
-            - ${NUXT_APP_PATH}:/usr/src/app
-        links:
-            - nginx
     php:
         container_name: container_php
         build:
@@ -17,8 +8,8 @@ services:
             args:
                 TIMEZONE: ${TIMEZONE}
         volumes:
-            - ${SYMFONY_APP_PATH}:/var/www/symfony
-            - ./logs/symfony:/var/www/symfony/var/log
+            - ${LARAVEL_APP_PATH}:/var/www/laravel
+            - ./logs/laravel:/var/www/laravel/var/log
         links:
             - mysql
     nginx:
@@ -38,7 +29,7 @@ services:
         container_name: container_mysql
         image: mysql
         volumes:
-            - "./.data/mysql:/var/lib/mysql"
+            - ./.data/mysql:/var/lib/mysql
         environment:
             MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
             MYSQL_DATABASE: ${MYSQL_DATABASE}

@@ -9,12 +9,12 @@ RUN apt-get update && apt-get install -y nginx vim
 ADD nginx.conf /etc/nginx/
 RUN sed "/fastcgi_read_timeout 60s;/c\  fastcgi_read_timeout ${MAX_EXECUTION_TIME}s;" -i /etc/nginx/nginx.conf
 ADD laravel.conf /etc/nginx/sites-available/
-RUN sed "/server_name symfony.dev;/c\  server_name ${SERVER_NAME};" -i /etc/nginx/sites-available/symfony.conf
+RUN sed "/server_name laravel.test;/c\  server_name ${SERVER_NAME};" -i /etc/nginx/sites-available/laravel.conf
 RUN echo "upstream php-upstream { server php:9000; }" > /etc/nginx/conf.d/upstream.conf
 RUN usermod -u 1000 www-data
 
 # Configure the virtual host
-RUN ln -s /etc/nginx/sites-available/symfony.conf /etc/nginx/sites-enabled/symfony
+RUN ln -s /etc/nginx/sites-available/laravel.conf /etc/nginx/sites-enabled/laravel
 RUN rm /etc/nginx/sites-enabled/default
 
 # Run Nginx
