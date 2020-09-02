@@ -6,9 +6,9 @@ First, copy `.env.dist` to `.env` and set configuration to desired values
 For default configuration .env of laravel app should look like that:
 ```
 DB_CONNECTION=mysql
-DB_HOST=db_name
+DB_HOST=mysql
 DB_PORT=3306
-DB_DATABASE=laravel
+DB_DATABASE=db_name
 DB_USERNAME=db_user
 DB_PASSWORD=db_password
 ```
