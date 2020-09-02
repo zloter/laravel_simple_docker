@@ -1,0 +1,7 @@
+/src
+/.data/*
+/logs/*
+/.idea
+!/logs/.gitkeep
+!/.data/.gitkeep
+.env
