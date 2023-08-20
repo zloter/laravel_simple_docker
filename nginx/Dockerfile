@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:latest
 ARG MAX_EXECUTION_TIME
 ARG SERVER_NAME
 
